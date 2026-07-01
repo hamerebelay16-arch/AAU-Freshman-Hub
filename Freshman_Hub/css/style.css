@@ -1,0 +1,356 @@
+:root {
+    --bg: #0b1020;
+    --card: #121936;
+    --muted: #9aa4c7;
+    --text: #e7ebff;
+    --primary: #6c8cff;
+    --primary-2: #95a8ff;
+    --accent: #29d3ac;
+    --ring: #1f2a5a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: #0b1020;
+    /* Solid fallback */
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(108, 140, 255, 0.1) 0%, transparent 40%),
+        linear-gradient(rgba(11, 16, 32, 0.8), rgba(11, 16, 32, 0.8)),
+        url('../pages/AAUphoto.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px;
+    background: rgba(10, 13, 30, .6);
+    backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid #1b2450;
+    background: rgba(11, 16, 32, 0.7);
+        /* Thinner background */
+        backdrop-filter: blur(15px);
+        /* Stronger blur */
+        padding: 1rem 8%;
+        /* Matches the 8% padding on your clubs page */
+}
+
+.nav .brand {
+    font-weight: 800;
+    letter-spacing: .2px
+}
+
+.nav nav a {
+    margin-left: 18px; 
+     padding: 8px 10px;
+    border-radius: 8px;
+    transition: background .2s ease
+}
+
+.nav nav a:hover {
+    background: #1a224a
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh;
+    padding: 0 20px;
+}
+.hero__content {
+    max-width: 900px;
+    z-index: 10;
+    /* Ensures buttons are on top */
+}
+
+.hero__content h1 {
+    
+            font-size: clamp(3rem, 10vw, 5rem);
+                /* Larger fluid size */
+                font-weight: 800;
+                letter-spacing: -2px;
+                margin-bottom: 10px;
+                color: #ffffff;
+                /* Soft glow makes it readable against any part of the photo */
+                text-shadow: 0 0 20px rgba(108, 140, 255, 0.4);
+        
+}
+.hero__subtitle {
+    font-size: 1.2rem;
+        letter-spacing: 5px;
+        color: var(--accent);
+        /* That nice teal/green color */
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 15px;
+}
+
+.hero__content p {
+    color: var(--muted);
+    margin: 6px 0 20px;
+    animation: fadeIn 2s ease-in-out;
+    font-size: 20px;
+}
+
+.hero__actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    /* Pill shape is more "classy" */
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), #4f46e5);
+    box-shadow: 0 10px 20px rgba(108, 140, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(108, 140, 255, 0.4);
+}
+
+.hero__art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .06) 0 2px, transparent 2px 6px);
+    mix-blend-mode: overlay;
+    opacity: .25;
+}
+
+.grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    padding: 20px 22px 60px;
+}
+
+.card {
+    background: linear-gradient(180deg, #131a3b 0%, #0f1734 100%);
+    border: 1px solid #1a2454;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #2b3a86
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px
+}
+
+.card h3 {
+    margin: 4px 0 6px
+}
+
+.card p {
+    color: var(--muted);
+    margin: 0 0 10px
+}
+
+.badge {
+    background: #1b2359;
+    border: 1px solid #2a3a8a;
+    color: #bfc9ff;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px
+}
+
+.ai-demo {
+    padding: 0 22px 80px
+}
+
+.ai-card {
+    background: linear-gradient(180deg, #12193a, #0f1633);
+    border: 1px solid #1c265e;
+    border-radius: 16px;
+    padding: 16px
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.row {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 2fr 2fr auto;
+    margin: 12px 0
+}
+
+select,
+input {
+    background: #0e1530;
+    border: 1px solid #1d2a62;
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 10px;
+    outline: none
+}
+
+select:focus,
+input:focus {
+    border-color: #3453ff;
+    box-shadow: 0 0 0 3px rgba(108, 140, 255, .2)
+}
+
+.ai-output {
+    margin-top: 12px;
+    background: #0e1431;
+    border: 1px dashed #263171;
+    border-radius: 12px;
+    padding: 12px
+}
+
+.footer {
+    background-color: #222; /* Dark background */
+    padding: 20px;
+    text-align: center;
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons a {
+    color: white;
+    font-size: 24px; /* Size of the icons */
+    margin: 0 15px; /* Spacing between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover effects for a better user experience */
+.icons a:hover {
+    color: #0088cc; /* Change color on hover (Telegram blue) */
+}
+
+@media (max-width:900px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__art {
+        order: -1
+    }
+        .footer {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+}
+#features {
+    display: grid;
+    grid-template-columns: repeat(2, 240px);
+    /* 2 cards per row */
+    justify-content: end;
+    /* align to right */
+    gap: 20px;
+}
+#features .card {
+    background: linear-gradient(180deg, #fff9c4 0%, #b8a81b 100%);
+    border: 2px solid #aa932e;
+    color: #150101;
+    /* darker text for readability */
+}
+/* 1. Define the Keyframes */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(108, 140, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(108, 140, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(108, 140, 255, 0);
+    }
+}
+
+/* 2. Apply to your elements */
+.hero__content h1 {
+    animation: revealUp 1s ease-out forwards;
+}
+
+.hero__subtitle {
+    animation: revealUp 1s ease-out 0.2s forwards;
+    /* 0.2s delay */
+    opacity: 0;
+    /* Start hidden */
+}
+
+.hero__content p {
+    animation: revealUp 1s ease-out 0.4s forwards;
+    /* 0.4s delay */
+    opacity: 0;
+    font-size: 1.1rem;
+    /* Slightly bigger description */
+}
+
+.btn-primary {
+    animation: glowPulse 2s infinite;
+    /* Constant subtle pulse */
+}
+

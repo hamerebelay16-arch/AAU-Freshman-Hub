@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore Clubs — AAU Freshman Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --primary: #818cf8;
+            --accent: #22d3ee;
+            --success: #34d399;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            /* Deep Space Gradient with subtle patterns */
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* --- NAVIGATION --- */
+        .appbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 8%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- HERO --- */
+        header.hero {
+            padding: 5rem 5% 4rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+           background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 1.5rem auto;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* --- GRID --- */
+        .main-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 5% 6rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Shimmer effect on hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(129, 140, 248, 0.4);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 1.25rem;
+            filter: grayscale(20%);
+        }
+
+        .card:hover img {
+            filter: grayscale(0%);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        /* --- DETAILS SECTION --- */
+        .details-pane {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .details-pane.active {
+            max-height: 1000px;
+            margin-top: 1.25rem;
+            padding-bottom: 1rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.25rem;
+        }
+
+        .detail-item {
+            margin-bottom: 1rem;
+        }
+
+        .detail-header {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .badge {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .btn-info {
+            background: rgba(129, 140, 248, 0.1); /* Subtle tint of your primary color */
+    color: var(--primary); /* Makes the text your signature purple/blue */
+    border: 1px solid rgba(129, 140, 248, 0.3); /* Soft glowing border */
+    transition: all 0.3s ease;
+        }
+
+        .btn-info:hover {
+            background: rgba(129, 140, 248, 0.2); /* Brightens slightly on hover */
+    border-color: var(--primary);
+    color: white;
+        }
+
+        .btn-reg {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: white;
+            display: none;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-reg:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- MODAL --- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1e293b;
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            width: 100%;
+            max-width: 450px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            color: white;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+        }
+
+        .success-ui {
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer {
+    background-color: #222; /* Dark background */
+    padding: 20px;
+    text-align: center;
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons a {
+    color: white;
+    font-size: 24px; /* Size of the icons */
+    margin: 0 15px; /* Spacing between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover effects for a better user experience */
+.icons a:hover {
+    color: #0088cc; /* Change color on hover (Telegram blue) */
+}
+    </style>
+</head>
+
+<body>
+    <nav class="appbar">
+        <a class="brand" href="index.html">AAU Freshman Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="academic.html">Academic</a>
+            <a href="departments.html">Departments</a>
+            <a href="clubs.html" class="active">Clubs</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Explore AAU Clubs</h1>
+        <p>Unleash your potential by joining student-led communities. From deep-tech cloud engineering to legal advocacy
+            and athletic excellence.</p>
+    </header>
+
+    <main class="main-container">
+        <div class="grid" id="clubsGrid">
+            <!-- Clubs Rendered Here -->
+        </div>
+    </main>
+
+    <!-- Modal UI -->
+    <div class="modal" id="regModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div id="formBody">
+                <h2 id="modalTitle" style="margin: 0 0 0.5rem 0;">Join Club</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Apply to become a member
+                    of the community.</p>
+                <form id="regForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" id="id" placeholder="UGR/0000/00" required
+                            pattern="^UGR\/[0-9]{4}\/[0-9]{2}$">
+                    </div>
+                    <div class="form-group">
+                        <label>AAU Email</label>
+                        <input type="email" id="email" placeholder="student@aau.edu.et" required>
+                    </div>
+                    <button type="submit" class="btn"
+                        style="background: var(--primary); color:white; margin-top:1rem;">Submit Application</button>
+                </form>
+            </div>
+            <div id="successBody" class="success-ui">
+                <div
+                    style="background: rgba(52, 211, 153, 0.1); color: var(--success); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; border: 1px solid var(--success);">
+                    ✓</div>
+                <h3 style="font-size: 1.5rem;">Application Sent!</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">The club administrators will review your
+                    application and contact you via your AAU email.</p>
+                <button class="btn btn-info" onclick="closeModal()">Close Window</button>
+            </div>
+        </div>
+    </div>
+     <footer class="footer">
+    <p style="color:white; justify-self: center;">
+        © <span id="year"></span> Addis Ababa University — Freshman Support.
+    </p>
+
+      <div class="icons">
+        <a href="https://web.facebook.com/p/Addis-Ababa-University-100064311447035/?_rdc=1&_rdr#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/aau_official_/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/aau_official" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+</footer>
+
+
+
+    <script>
+        const clubs = [
+            {
+                name: "GDG AAU",
+                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+                about: "Google Developer Groups on Campus is the premier tech community for students at AAU.",
+                why: "Master Google technologies, build production-grade apps, and connect with global developers.",
+                teams: ["Android", "Web", "UI/UX", "Community"]
+            },
+            {
+                name: "AWS Cloud Club",
+                img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+                about: "A specialized community focused on Amazon Web Services and cloud computing architecture.",
+                why: "Get AWS certification prep, hands-on labs with cloud services, and learn DevOps workflows.",
+                teams: ["Architecture", "Serverless", "Security", "Workshops"]
+            },
+            {
+                name: "AI & Robotics Club",
+                img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+                about: "Pushing the boundaries of automation and intelligence through student-led research and builds.",
+                why: "Build autonomous drones, work on LLMs, and compete in international robotics challenges.",
+                teams: ["ML Engineering", "Embedded Systems", "Vision", "Competitions"]
+            },
+            {
+                name: "Sports & Recreation",
+                img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80",
+                about: "The heart of athletic life at AAU, managing competitive leagues and recreational fitness.",
+                why: "Represent AAU in national tournaments, stay fit, and build character through teamwork.",
+                teams: ["Varsity", "eSports", "Event Planning", "Medical"]
+            },
+            {
+                name: "Entrepreneurship Club",
+                img: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80",
+                about: "Bridging the gap between academic theory and the Ethiopian startup ecosystem.",
+                why: "Incubate your startup, find co-founders, and learn from Ethiopia's top entrepreneurs.",
+                teams: ["Incubation", "Pitching", "Market Research", "Partnerships"]
+            },
+            {
+                name: "Justice Club",
+                img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+                about: "Advocating for student rights, legal literacy, and social justice within and beyond the campus.",
+                why: "Participate in moot court competitions, provide legal aid clinics, and debate policy.",
+                teams: ["Moot Court", "Human Rights", "Legal Aid", "Debate"]
+            }
+        ];
+
+        function init() {
+            const grid = document.getElementById('clubsGrid');
+            grid.innerHTML = clubs.map((c, i) => `
+                <div class="card">
+                    <img src="${c.img}" alt="${c.name}">
+                    <h3>${c.name}</h3>
+                    <div class="details-pane" id="pane-${i}">
+                        <div class="detail-item">
+                            <span class="detail-header">Mission</span>
+                            ${c.about}
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-header">Growth Opportunity</span>
+                            ${c.why}
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-header">Sub-Groups</span>
+                            <div class="badge-list">
+                                ${c.teams.map(t => `<span class="badge">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-info" id="btn-info-${i}" onclick="toggle(${i})">View Details</button>
+                        <button class="btn btn-reg" id="btn-reg-${i}" onclick="openModal('${c.name}')">Join Community</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggle(id) {
+            const pane = document.getElementById(`pane-${id}`);
+            const reg = document.getElementById(`btn-reg-${id}`);
+            const info = document.getElementById(`btn-info-${id}`);
+
+            if (pane.classList.contains('active')) {
+                pane.classList.remove('active');
+                reg.style.display = 'none';
+                info.innerText = "View Details";
+            } else {
+                pane.classList.add('active');
+                reg.style.display = 'flex';
+                info.innerText = "Show Less";
+            }
+        }
+
+        function openModal(name) {
+            document.getElementById('modalTitle').innerText = "Apply for " + name;
+            document.getElementById('regModal').classList.add('active');
+            document.getElementById('formBody').style.display = 'block';
+            document.getElementById('successBody').style.display = 'none';
+        }
+
+        function closeModal() {
+            document.getElementById('regModal').classList.remove('active');
+            document.getElementById('regForm').reset();
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            document.getElementById('formBody').style.display = 'none';
+            document.getElementById('successBody').style.display = 'flex';
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Academic — AAU Freshman Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --border: rgba(255, 255, 255, 0.1);
+        --primary: #818cf8;
+        --accent: #22d3ee;
+        --text-main: #f1f5f9;
+        --text-muted: #94a3b8;
+        --nav-bg: rgba(15, 23, 42, 0.8);
+      }
+
+      * {
+        box-sizing: border-box;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        background-image: radial-gradient(
+            circle at 20% 20%,
+            rgba(79, 70, 229, 0.15) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(14, 165, 233, 0.1) 0%,
+            transparent 40%
+          ),
+          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        color: var(--text-main);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        min-height: 100vh;
+      }
+
+      /* --- NAVIGATION --- */
+      .appbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 8%;
+        background: var(--nav-bg);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .brand {
+        font-weight: 800;
+        font-size: 1.25rem;
+        text-decoration: none;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links a {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .nav-links a.active {
+        color: var(--primary);
+      }
+
+      header.hero {
+        padding: 5rem 5% 3.5rem;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin: 0;
+        background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        color: var(--text-muted);
+        max-width: 650px;
+        margin: 1rem auto;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* --- GRID --- */
+      .main-container {
+        max-width: 1400px; /* Increase this (e.g., from 1200px to 1400px) */
+        margin: 0 auto;
+        padding: 0 5%;
+      }
+
+      .grid {
+        display: grid;
+        /* Increase the first value in minmax to make cards wider */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 120px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-12px);
+        border-color: var(--primary);
+        box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7);
+      }
+
+      .card-photo {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .card-content {
+        padding: 1.75rem;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          rgba(30, 41, 59, 0) 0%,
+          rgba(30, 41, 59, 0.8) 100%
+        );
+      }
+
+      .card h3 {
+        font-size: 1.4rem;
+        margin: 0 0 0.5rem 0;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      /* --- THE FIXED MINI BOX (Transparency improved) --- */
+      .menu-overlay {
+        position: absolute;
+        inset: 0;
+        /* Changed from solid dark to a very subtle glass tint */
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(8px);
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 12px;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        transform: translateY(10px);
+      }
+
+      .card:hover .menu-overlay {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .menu-btn {
+        background: rgba(15, 23, 42, 0.8);
+        /* Darker buttons for contrast against light overlay */
+        border: 1px solid var(--border);
+        color: white;
+        padding: 1rem 0.5rem;
+        border-radius: 18px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-btn svg {
+        width: 20px;
+        height: 20px;
+        opacity: 0.8;
+      }
+
+      .menu-btn:hover {
+        background: var(--primary);
+        transform: translateY(-5px);
+        border-color: white;
+      }
+
+      .menu-btn.accent:hover {
+        background: var(--accent);
+        color: #0f172a;
+      }
+
+      /* --- MODAL --- */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.95);
+        backdrop-filter: blur(20px);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-card {
+        background: #1e293b;
+        border: 1px solid var(--border);
+        width: 100%;
+        max-width: 500px;
+        border-radius: 24px;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 2rem;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      .resource-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .resource-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .btn-open {
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      #toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: var(--primary);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        z-index: 3000;
+        transition: transform 0.3s;
+      }
+
+      #toast.visible {
+        transform: translateX(-50%) translateY(0);
+      }
+      .footer {
+        background-color: #222; /* Dark background */
+        padding: 20px;
+        text-align: center;
+      }
+
+      .icons {
+        margin-top: 10px;
+      }
+
+      .icons a {
+        color: white;
+        font-size: 24px; /* Size of the icons */
+        margin: 0 15px; /* Spacing between icons */
+        transition: color 0.3s ease;
+        text-decoration: none;
+      }
+
+      /* Hover effects for a better user experience */
+      .icons a:hover {
+        color: #0088cc; /* Change color on hover (Telegram blue) */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="toast">Coming Soon! 🚀</div>
+
+    <nav class="appbar">
+      <a class="brand" href="index.html">AAU Freshman Hub</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="academic.html" class="active">Academic</a>
+        <a href="departments.html">Departments</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1>Academic Resources</h1>
+      <p>
+        Your centralized repository for course notes, past exams, and study
+        materials.
+      </p>
+    </header>
+
+    <main class="main-container">
+      <div class="grid" id="courseGrid"></div>
+      <div id="ai-output" style="margin-top: 40px"></div>
+      <div style="display: none">
+        <form id="ai-form">
+          <input id="ai-course" type="hidden" />
+          <input id="ai-topic" type="hidden" />
+          <button type="submit">Generate Quiz</button>
+        </form>
+      </div>
+    </main>
+
+    <div class="modal" id="resourceModal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 id="modalTitle">Resources</h2>
+          <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="resource-list" id="resourceList"></div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p style="color: white; justify-self: center">
+        © <span id="year"></span> Addis Ababa University — Freshman Support.
+      </p>
+
+      <div class="icons">
+        <a
+          href="https://web.facebook.com/p/Addis-Ababa-University-100064311447035/?_rdc=1&_rdr#"
+          aria-label="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/aau_official_/"
+          aria-label="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://t.me/aau_official" aria-label="Telegram"
+          ><i class="fab fa-telegram-plane"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script>
+      const courses = [
+        {
+          id: "logic",
+          name: "Logic & Critical Thinking",
+          image: "Logic.png",
+          notes: [
+            {
+              title: "Logic Chapter 1",
+              url: "../notes/notes/logic and critical thinking/Logic chapter 1.pdf",
+            },
+            {
+              title: "Logic Chapter 2",
+              url: "../notes/notes/logic and critical thinking/logic chapter 2.pdf",
+            },
+            {
+              title: "Logic Chapter 3",
+              url: "../notes/notes/logic and critical thinking/logic chapter 3.pdf",
+            },
+          ],
+          exams: [
+            {
+              title: "Logic Midterm 1",
+              type: "Midterm",
+              url: "../exams/Logic_midterm_1.pdf",
+            },
+            {
+              title: "Logic Midterm 2",
+              type: "Midterm",
+              url: "../exams/Logic_midterm_2.pdf",
+            },
+            {
+              title: "Logic Final",
+              type: "Final",
+              url: "../exams/Logic_final.pdf",
+            },
+          ],
+        },
+        {
+          id: "psychology",
+          name: "Psychology",
+          image: "Psycho.jpeg",
+          notes: [
+            {
+              title: "Psychology Chapter 1",
+              url: "../notes/notes/psychology/Chapter 1 Essence of Psychology-1_270721091343.pptx",
+            },
+          ],
+          exams: [
+            {
+              title: "Psychology Midterm 1",
+              type: "Midterm",
+              url: "../exams/Psychology_midterm_1.pdf",
+            },
+            {
+              title: "Psychology Final",
+              type: "Final",
+              url: "../exams/Psychology_final.pdf",
+            },
+          ],
+        },
+        {
+          id: "applied",
+          name: "Applied Mathematics",
+          image: "Maths.jpeg",
+          notes: [],
+          exams: [
+            {
+              title: "Applied Midterm 4",
+              type: "Midterm",
+              url: "../exams/Applied_Midterm_Exam_4.pdf",
+            },
+            {
+              title: "Applied Midterm 5",
+              type: "Midterm",
+              url: "../exams/Applied_Midterm_Exam_5.pdf",
+            },
+          ],
+        },
+        {
+          id: "geography",
+          name: "Geography",
+          image:
+            "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&q=80&w=800",
+          notes: [],
+          exams: [],
+        },
+        {
+          id: "history",
+          name: "History",
+          image: "History.jpeg",
+          notes: [],
+          exams: [],
+        },
+        {
+          id: "physics",
+          name: "General Physics",
+          image: "Physics.jpeg",
+          notes: [],
+          exams: [],
+        },
+      ];
+
+      const icons = {
+        notes: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+        exams: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>`,
+        quiz: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+        flash: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+      };
+
+      function init() {
+        const grid = document.getElementById("courseGrid");
+        grid.innerHTML = courses
+          .map(
+            (c) => `
+        <div class="card">
+            <img src="${c.image}" alt="${c.name}" class="card-photo">
+            <div class="card-content">
+                <h3>${c.name}</h3>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                    ${c.notes.length + c.exams.length} Resources
+                </p>
+            </div>
+            <div class="menu-overlay">
+                <button class="menu-btn" onclick="openModal('${
+                  c.id
+                }', 'notes')">
+                    ${icons.notes} <span>Notes</span>
+                </button>
+                <button class="menu-btn" onclick="openModal('${
+                  c.id
+                }', 'exams')">
+                    ${icons.exams} <span>Exams</span>
+                </button>
+                <button class="menu-btn accent" onclick="triggerAIQuiz('${
+                  c.name
+                }')">
+                    ${icons.quiz} <span>Quiz</span>
+                </button>
+                <button class="menu-btn accent" onclick="showToast()">
+                    ${icons.flash} <span>Flashcards</span>
+                </button>
+            </div>
+        </div>
+    `
+          )
+          .join("");
+      }
+
+      function showToast() {
+        const toast = document.getElementById("toast");
+        toast.classList.add("visible");
+        setTimeout(() => toast.classList.remove("visible"), 2500);
+      }
+
+      function openModal(courseId, type) {
+        const course = courses.find((c) => c.id === courseId);
+        const modal = document.getElementById("resourceModal");
+        const list = document.getElementById("resourceList");
+        const title = document.getElementById("modalTitle");
+        title.innerText =
+          type === "notes" ? `${course.name} Notes` : `${course.name} Exams`;
+        list.innerHTML = "";
+        const items = course[type];
+        if (items.length === 0) {
+          list.innerHTML =
+            '<p style="text-align:center; color: var(--text-muted);">No materials yet.</p>';
+        } else {
+          items.forEach((item) => {
+            const row = document.createElement("div");
+            row.className = "resource-item";
+            row.innerHTML = `
+                        <span>${item.title} ${
+              item.type ? "(" + item.type + ")" : ""
+            }</span>
+                        <a href="${
+                          item.url
+                        }" target="_blank" class="btn-open">Open</a>
+                    `;
+            list.appendChild(row);
+          });
+        }
+        modal.classList.add("active");
+      }
+
+      function closeModal() {
+        document.getElementById("resourceModal").classList.remove("active");
+      }
+      document
+        .getElementById("resourceModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeModal();
+        });
+      init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "logic",
+    "name": "Logic & Critical Thinking",
+    "image": "../assets/courses/logic.png",
+    "notes": [
+      { "title": "Logic Chapter 1", "url": "../notes/notes/logic and critical thinking/Logic chapter 1.pdf" },
+      { "title": "Logic Chapter 2", "url": "../notes/notes/logic and critical thinking/logic chapter 2.pdf" },
+      { "title": "Logic Chapter 3", "url": "../notes/notes/logic and critical thinking/logic chapter 3.pdf" }
+    ],
+    "exams": [
+      { "title": "Logic Midterm 1", "type": "Midterm", "url": "../exams/Logic_midterm_1.pdf" },
+      { "title": "Logic Midterm 2", "type": "Midterm", "url": "../exams/Logic_midterm_2.pdf" },
+      { "title": "Logic Final", "type": "Final", "url": "../exams/Logic_final.pdf" }
+    ],
+    "quizzes": [
+      {
+        "chapter": "Chapter 1",
+        "questions": [
+          {
+            "question": "Logic is mainly concerned with?",
+            "options": ["Emotions", "Reasoning", "Memory", "Language"],
+            "answer": 1
+          },
+          {
+            "question": "Which one is an argument?",
+            "options": ["It is raining", "Because it is raining, the road is wet", "Hello world", "Stop!"],
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "chapter": "Chapter 2",
+        "questions": [
+          {
+            "question": "A valid argument means?",
+            "options": ["True conclusion", "True premises", "Conclusion follows from premises", "Popular opinion"],
+            "answer": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "psychology",
+    "name": "Psychology",
+    "image": "../assets/courses/pycho.png",
+    "notes": [
+      { "title": "Psychology Chapter 1", "url": "../notes/notes/psychology/Chapter 1 Essence of Psychology-1_270721091343.pptx" }
+    ],
+    "exams": [
+      { "title": "Psychology Midterm 1", "type": "Midterm", "url": "../exams/Psychology_midterm_1.pdf" },
+      { "title": "Psychology Midterm 2", "type": "Midterm", "url": "../exams/Psychology_midterm_2.pdf" },
+      { "title": "Psychology Final", "type": "Final", "url": "../exams/Psychology_final.pdf" }
+    ]
+  },
+  {
+    "id": "applied",
+    "name": "Applied Mathematics",
+    "image": "../assets/courses/maths.png",
+    "notes": [],
+    "exams": [
+      { "title": "Applied Midterm Exam 4", "type": "Midterm", "url": "../exams/Applied_Midterm_Exam_4.pdf" },
+      { "title": "Applied Midterm Exam 5", "type": "Midterm", "url": "../exams/Applied_Midterm_Exam_5.pdf" },
+      { "title": "Applied Midterm Exam 6", "type": "Midterm", "url": "../exams/Applied_Midterm_Exam_6.pdf" }
+    ]
+  }
+]

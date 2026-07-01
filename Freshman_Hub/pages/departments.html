@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Departments — AAU Freshman Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --primary: #818cf8;
+            --accent: #22d3ee;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .appbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 8%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        header.hero {
+            padding: 5rem 5% 3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 1rem auto;
+            font-size: 20px;
+        }
+
+        .main-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 5% 6rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+        }
+
+        .pillar-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(129, 140, 248, 0.1);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            flex-shrink: 0;
+        }
+
+        .pillar-info h2 {
+            font-size: 2.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .pillar-info p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .dept-accordion {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .dept-item {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.3);
+        }
+
+        .dept-trigger {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dept-trigger:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .dept-trigger i {
+            font-style: normal;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .dept-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 1.5rem;
+        }
+
+        .dept-item.active .dept-content {
+            max-height: 1500px;
+            padding-bottom: 2.5rem;
+        }
+
+        .dept-item.active .dept-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .description-text {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+            text-align: justify;
+        }
+
+        .career-box {
+            background: rgba(34, 211, 238, 0.05);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .career-box strong {
+            display: block;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .career-box p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .wiki-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1.25rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            gap: 0.5rem;
+            border-bottom: 1px solid transparent;
+        }
+
+        .wiki-link:hover {
+            border-bottom-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .pillar-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pillar-card {
+                padding: 1.5rem;
+            }
+        }
+        .footer {
+    background-color: #222; /* Dark background */
+    padding: 20px;
+    text-align: center;
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons a {
+    color: white;
+    font-size: 24px; /* Size of the icons */
+    margin: 0 15px; /* Spacing between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover effects for a better user experience */
+.icons a:hover {
+    color: #0088cc; /* Change color on hover (Telegram blue) */
+}
+    </style>
+</head>
+
+<body>
+    <nav class="appbar">
+        <a class="brand" href="index.html">AAU Freshman Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="academic.html">Academic</a>
+            <a href="#" class="active">Departments</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Navigate Your Future</h1>
+        <p>A comprehensive roadmap for Addis Ababa University freshmen. Dive into the core disciplines, understand the
+            academic rigor, and visualize your professional journey in Ethiopia's leading institution.</p>
+    </header>
+
+    <main class="main-container">
+        <div class="grid" id="pillarGrid">
+            <!-- Dynamic Content -->
+        </div>
+    </main>
+ <footer class="footer">
+    <p style="color:white; justify-self: center;">
+        © <span id="year"></span> Addis Ababa University — Freshman Support.
+    </p>
+
+    <div class="icons">
+        <a href="https://web.facebook.com/p/Addis-Ababa-University-100064311447035/?_rdc=1&_rdr#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/aau_official_/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/aau_official" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+</footer>
+
+
+    <script>
+        const pillars = [
+            {
+                name: "Health Sciences",
+                icon: "🩺",
+                desc: "The pinnacle of medical education in Ethiopia, focused on saving lives and advancing clinical research.",
+                depts: [
+                    {
+                        name: "School of Medicine",
+                        desc: "The medical program at AAU is recognized as the most prestigious and challenging path in the country. Over several intensive years, students transition from fundamental biological sciences—including human anatomy, histology, and biochemistry—to high-stakes clinical rotations. Training primarily occurs at the Tikur Anbessa Specialized Hospital, where students encounter a vast spectrum of medical cases. The curriculum emphasizes not only surgical precision and diagnostic accuracy but also the deep ethical responsibility of patient care. Graduates are expected to lead the healthcare sector, moving from general practice into specialized fields like Neurosurgery, Cardiology, or Oncology through postgraduate studies.",
+                        career: "Specialist Physician, Surgeon, Medical Researcher, Hospital Administrator, Health Policy Advisor.",
+                        wiki: "https://en.wikipedia.org/wiki/Medicine"
+                    },
+                    {
+                        name: "School of Pharmacy",
+                        desc: "This department is at the intersection of biology, chemistry, and clinical therapy. Students delve into the complex world of drug synthesis, pharmacology, and toxicology. The program teaches you how chemicals interact with the human body on a molecular level to fight disease. You will study industrial pharmacy, pharmaceutical analysis, and clinical pharmacy practices. Beyond just dispensing medication, this degree prepares you to be a vital part of the medical decision-making team, ensuring therapeutic effectiveness and patient safety while potentially engaging in the development of new treatments in pharmaceutical labs.",
+                        career: "Clinical Pharmacist, Drug Formulation Scientist, Regulatory Affairs Officer, Pharmaceutical Quality Controller."
+                    },
+                    {
+                        name: "Medical Laboratory Sciences",
+                        desc: "Medical Laboratory Sciences (MLS) is the 'detective' work of modern medicine. In this department, students master the advanced technologies used to analyze blood, tissue, and other biological fluids to detect pathogens and monitor health markers. You will gain expertise in microbiology, hematology, immunology, and molecular diagnostics. The curriculum focuses on precision and reliability, as lab results form the basis of over 70% of medical diagnoses. As the field evolves, students also learn about genomics and bio-informatics, preparing them for roles in both diagnostic clinics and high-level research institutions.",
+                        career: "Clinical Laboratory Scientist, Biomedical Researcher, Forensic Analyst, Public Health Lab Director."
+                    },
+                    {
+                        name: "Nursing & Midwifery",
+                        desc: "This discipline focuses on the holistic care of individuals and communities. The curriculum is a balanced blend of medical knowledge and advanced caregiving techniques. Students learn clinical nursing, emergency care, and maternal-neonatal health. Midwifery students specifically focus on the critical cycles of pregnancy and childbirth, aiming to reduce maternal mortality. The program produces highly skilled professionals capable of managing patient recovery, educating the public on wellness, and serving as the primary bridge between the medical system and the patient, often in high-pressure environments.",
+                        career: "Registered Nurse, Certified Midwife, Health Service Manager, Nurse Educator, Community Health Specialist."
+                    }
+                ]
+            },
+            {
+                name: "Engineering & Tech",
+                icon: "⚙️",
+                desc: "Innovating the physical and digital foundations of society through mathematics and creative logic.",
+                depts: [
+                    {
+                        name: "Software Engineering",
+                        desc: "Software Engineering at AAU focuses on the entire lifecycle of software development—from initial requirements gathering to deployment and maintenance. Students move beyond simple coding to master system architecture, database design, and user experience engineering. You will learn to apply rigorous engineering principles to ensure software is scalable, secure, and efficient. The curriculum covers a variety of programming languages, agile methodologies, and project management. In a world driven by digital transformation, this major prepares you to build the complex applications that power industries, from financial fintech systems to healthcare platforms.",
+                        career: "Software Architect, DevOps Engineer, Full-Stack Developer, Systems Analyst, Tech Entrepreneur.",
+                        wiki: "https://en.wikipedia.org/wiki/Software_engineering"
+                    },
+                    {
+                        name: "Computer Science",
+                        desc: "While related to software engineering, Computer Science dives deeper into the 'why' and 'how' of computation. The program is heavily theoretical and mathematical, exploring artificial intelligence, machine learning, computational theory, and cybersecurity. Students learn how computers process information at a fundamental level and how to design algorithms that can solve unsolvable problems. This department is ideal for those interested in the future of tech—researching neural networks, improving encryption methods, or developing the next generation of operating systems and programming languages.",
+                        career: "AI Researcher, Data Scientist, Cybersecurity Specialist, Algorithm Designer, Academic Researcher.",
+                        wiki: "https://en.wikipedia.org/wiki/Computer_science"
+                    },
+                    {
+                        name: "Information Science",
+                        desc: "Information Science focuses on the management of data as a strategic resource. It sits at the cross-section of technology, management, and human behavior. Students learn how to organize, store, and retrieve information efficiently in large-scale systems. The curriculum covers database management, knowledge representation, and digital libraries. This field is critical for any organization that deals with massive amounts of data, teaching you how to transform raw data into actionable knowledge to solve complex organizational and societal challenges.",
+                        career: "Information Systems Manager, Database Administrator, Data Governance Officer, UX Researcher.",
+                        wiki: "https://en.wikipedia.org/wiki/Information_science"
+                    },
+                    {
+                        name: "Electrical & Computer Engineering",
+                        desc: "This is a broad and powerful engineering discipline that spans from microscopic circuits to nationwide power grids. Students specialize in areas like power systems, electronics, telecommunications, or control engineering. You will learn the physics of electricity and the logic of digital hardware. The curriculum involves designing complex circuitry, managing large-scale energy systems, and developing communication protocols. As Ethiopia expands its infrastructure, graduates from this department are essential for building the future of the nation's energy and communication networks.",
+                        career: "Electronics Engineer, Power Systems Analyst, Telecom Engineer, Hardware Designer.",
+                        wiki: "https://en.wikipedia.org/wiki/Electrical_engineering"
+                    },
+                    {
+                        name: "Civil Engineering",
+                        desc: "Civil Engineering is the oldest engineering discipline, focused on the design, construction, and maintenance of the physical and naturally built environment. Students study structural analysis, fluid mechanics, and geotechnical engineering. You will learn how to design dams, bridges, skyscrapers, and transport systems that can withstand the test of time and nature. The program emphasizes sustainability and safety, preparing you to lead massive national infrastructure projects that define the physical landscape of the country.",
+                        career: "Structural Designer, Site Engineer, Project Manager, Water Resource Engineer, Urban Planner.",
+                        wiki: "https://en.wikipedia.org/wiki/Civil_engineering"
+                    }
+                ]
+            },
+            {
+                name: "Natural Sciences",
+                icon: "🧪",
+                desc: "Exploring the fundamental laws of nature and the universe through empirical research and theory.",
+                depts: [
+                    {
+                        name: "Biology",
+                        desc: "The Department of Biology provides an expansive look at life in all its forms, from molecular genetics to global ecosystems. Students choose pathways in areas like plant science, zoology, microbiology, or biotechnology. The curriculum is heavily lab-based, teaching you how to conduct biological research, analyze genetic data, and understand the intricate balance of local and global environments. This major is crucial for addressing challenges like biodiversity loss, agricultural productivity, and the development of biological solutions for industrial and medical use.",
+                        career: "Biotechnologist, Microbiologist, Environmental Consultant, Conservation Scientist, Lab Manager.",
+                        wiki: "https://en.wikipedia.org/wiki/Biology"
+                    },
+                    {
+                        name: "Physics",
+                        desc: "Physics is the fundamental science that seeks to understand how the universe behaves. Students explore the laws of motion, electromagnetism, thermodynamics, and quantum mechanics. The program trains you to model complex physical phenomena using advanced mathematics. Whether studying the subatomic particles in a lab or the movements of celestial bodies in space, this department develops elite analytical skills. Physics graduates often move into diverse fields because of their unique ability to solve complex, logic-driven problems.",
+                        career: "Astrophysicist, Medical Physicist, Renewable Energy Expert, Systems Modeler, Researcher."
+                    },
+                    {
+                        name: "Mathematics",
+                        desc: "Mathematics is the universal language of science, technology, and finance. The program at AAU challenges students with abstract algebra, real analysis, topology, and differential equations. You will learn to construct rigorous proofs and develop mathematical models for real-world scenarios. This department produces thinkers with unparalleled logical clarity. The skills gained here are highly transferable, allowing graduates to dominate fields that require high-level data analysis, cryptography, or the engineering of complex financial systems.",
+                        career: "Data Scientist, Actuary, Financial Analyst, Cryptographer, Mathematics Professor."
+                    },
+                    {
+                        name: "Statistics",
+                        desc: "Statistics is the science of learning from data. In an era of 'Big Data,' this department is more relevant than ever. Students learn the mathematical foundations of probability, sampling theory, and regression analysis. You will be trained in using statistical software to identify trends, make predictions, and drive evidence-based decision-making. Statisticians are the backbone of government policy-making, medical trials, insurance risk assessment, and corporate strategy, turning uncertainty into calculated risk and informed insight.",
+                        career: "Statistical Consultant, Data Analyst, Market Researcher, Bio-statistician, Risk Manager."
+                    }
+                ]
+            },
+            {
+                name: "Commerce & Business",
+                icon: "📊",
+                desc: "Driving the national and global economy through leadership, finance, and organizational strategy.",
+                depts: [
+                    {
+                        name: "Accounting & Finance",
+                        desc: "This department trains the financial guardians of the corporate world. Students master financial reporting, management accounting, auditing, and international financial laws. The curriculum emphasizes transparency, ethics, and the strategic management of capital. You will learn to analyze financial statements to determine an organization's health and advise on investment strategies. This is a rigorous professional path that prepares you for high-level certification and roles where precision and integrity are the highest priorities.",
+                        career: "Chartered Accountant, Financial Controller, Auditor, Investment Banker, Tax Consultant.",
+                        wiki: "https://en.wikipedia.org/wiki/Accountancy"
+                    },
+                    {
+                        name: "Logistics & Supply Chain",
+                        desc: "Logistics is the science of moving things efficiently. Students learn about procurement, inventory management, international trade, and transportation systems. In a globalized world, managing the flow of goods from manufacturer to consumer is a complex challenge involving multiple borders and technologies. This program prepares you to optimize these networks, reducing costs and increasing efficiency for businesses and government agencies alike, making you a vital part of the national economic engine.",
+                        career: "Supply Chain Director, Logistics Coordinator, Procurement Manager, Operations Analyst."
+                    },
+                    {
+                        name: "Economics",
+                        desc: "Economics examines how individuals, businesses, and governments make choices about resource allocation. Students study microeconomics, macroeconomics, and econometrics. You will learn to analyze market trends, evaluate public policies, and understand the factors that drive economic growth or recession. The program provides the analytical tools to solve large-scale societal problems, making it an ideal major for those who want to influence national policy or engage in high-level financial market analysis.",
+                        career: "Economic Policy Advisor, Financial Analyst, Market Researcher, Development Officer."
+                    }
+                ]
+            },
+            {
+                name: "Social Sciences & Arts",
+                icon: "⚖️",
+                desc: "Understanding the human experience, the structures of society, and the evolution of culture.",
+                depts: [
+                    {
+                        name: "Sociology",
+                        desc: "Sociology explores the hidden structures that shape human behavior. Students investigate themes like urbanization, family dynamics, social inequality, and cultural identity. By applying both qualitative interviews and quantitative surveys, you will learn to identify social patterns and the root causes of social issues. This department is dedicated to producing professionals who can design community development programs, advocate for social justice, and understand the complex changes occurring in modern Ethiopian society.",
+                        career: "Social Researcher, Community Development Lead, HR Specialist, NGO Program Officer.",
+                        wiki: "https://en.wikipedia.org/wiki/Sociology"
+                    },
+                    {
+                        name: "Political Science & IR",
+                        desc: "This department focuses on the dynamics of power, governance, and international diplomacy. Students analyze different political systems, international law, and the history of global conflict and cooperation. The curriculum prepares you to understand the complexities of regional geopolitics, particularly in the Horn of Africa. You will learn to negotiate, analyze policy, and think critically about the role of the state in a globalized world, making it the perfect path for future leaders and diplomats.",
+                        career: "Diplomat, Policy Analyst, Political Consultant, International Relations Specialist, Journalist."
+                    },
+                    {
+                        name: "English Literature",
+                        desc: "English Literature is more than just reading stories—it is the study of language, communication, and human thought across history. Students master the art of critical analysis, exploring how texts reflect and shape cultural values. The program emphasizes advanced writing, linguistic theory, and professional communication skills. Graduates are highly valued in any field that requires clear expression, complex analytical thinking, and the ability to bridge different cultural perspectives through the power of language.",
+                        career: "Editor, Communications Director, Technical Writer, Academic Professor, Content Strategist."
+                    }
+                ]
+            }
+        ];
+
+        function init() {
+            const grid = document.getElementById('pillarGrid');
+            grid.innerHTML = pillars.map((p, pIndex) => `
+                <section class="pillar-card">
+                    <div class="pillar-header">
+                        <div class="icon-box">${p.icon}</div>
+                        <div class="pillar-info">
+                            <h2>${p.name}</h2>
+                            <p>${p.desc}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dept-accordion">
+                        ${p.depts.map((d, dIndex) => `
+                            <div class="dept-item" id="dept-${pIndex}-${dIndex}">
+                                <button class="dept-trigger" onclick="toggleDept(${pIndex}, ${dIndex})">
+                                    ${d.name}
+                                    <i>▼</i>
+                                </button>
+                                <div class="dept-content">
+                                    <div class="description-text">
+                                        ${d.desc}
+                                    </div>
+                                    <div class="career-box">
+                                        <strong>Potential Career Paths</strong>
+                                        <p>${d.career}</p>
+                                    </div>
+                                    ${d.wiki ? `
+                                        <a href="${d.wiki}" target="_blank" class="wiki-link">
+                                            Explore more on Wikipedia ↗
+                                        </a>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `).join('');
+        }
+
+        function toggleDept(pIdx, dIdx) {
+            const element = document.getElementById(`dept-${pIdx}-${dIdx}`);
+            element.classList.toggle('active');
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

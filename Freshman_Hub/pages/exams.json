@@ -1,0 +1,83 @@
+{
+  "applied_midterm_exam_4_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Applied Midterm Exam 4",
+      "url": "../exams/Applied_Midterm_Exam_4.pdf"
+    }
+  ],
+  "applied_midterm_exam_5_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Applied Midterm Exam 5",
+      "url": "../exams/Applied_Midterm_Exam_5.pdf"
+    }
+  ],
+  "applied_midterm_exam_6_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Applied Midterm Exam 6",
+      "url": "../exams/Applied_Midterm_Exam_6.pdf"
+    }
+  ],
+  "logic_final_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Final",
+      "title": "Logic Final",
+      "url": "../exams/Logic_final.pdf"
+    }
+  ],
+  "logic_midterm_1_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Logic Midterm 1",
+      "url": "../exams/Logic_midterm_1.pdf"
+    }
+  ],
+  "logic_midterm_2_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Logic Midterm 2",
+      "url": "../exams/Logic_midterm_2.pdf"
+    }
+  ],
+  "psychology_final_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Final",
+      "title": "Psychology Final",
+      "url": "../exams/Psychology_final.pdf"
+    }
+  ],
+  "psychology_midterm_1_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Psychology Midterm 1",
+      "url": "../exams/Psychology_midterm_1.pdf"
+    }
+  ],
+  "psychology_midterm_2_pdf": [
+    {
+      "year": null,
+      "semester": null,
+      "type": "Mid",
+      "title": "Psychology Midterm 2",
+      "url": "../exams/Psychology_midterm_2.pdf"
+    }
+  ]
+}

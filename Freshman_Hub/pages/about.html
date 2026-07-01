@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us — AAU Freshman Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --primary: #818cf8;
+            --accent: #22d3ee;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            background-image: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        .appbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 8%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            text-decoration: none;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        /* --- CONTENT --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 5% 8rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-block::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-top: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid transparent;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .team-section {
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .member-img {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--bg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+    background-color: #222; /* Dark background */
+    padding: 20px;
+    text-align: center;
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons a {
+    color: white;
+    font-size: 24px; /* Size of the icons */
+    margin: 0 15px; /* Spacing between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover effects for a better user experience */
+.icons a:hover {
+    color: #0088cc; /* Change color on hover (Telegram blue) */
+}
+    </style>
+</head>
+
+<body>
+    <nav class="appbar">
+        <a class="brand" href="index.html">AAU Freshman Hub</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="academic.html">Academic</a>
+            <a href="departments.html">Departments</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="about.html" class="active">About</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero-section">
+            <span class="subtitle">Built for Students, By Students</span>
+            <h1>Empowering the Next Generation of AAU Scholars</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+                Transitioning into university life is one of the biggest challenges a student faces. We’re here to make
+                sure you don't walk that path alone.
+            </p>
+        </header>
+
+        <section class="story-block">
+            <h2>Our Mission</h2>
+            <p>
+                The AAU Freshman Hub was born out of a simple observation: students spend more time looking for
+                resources than actually studying them. We've consolidated years of past exams, high-quality lecture
+                notes, and community knowledge into one high-speed, modern platform.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="500">375</span>
+                    <p>Resources Available</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="12">9</span>
+                    <p>Courses Covered</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="1000">750</span>
+                    <p>Monthly Users</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Meet the Visionaries</h2>
+            <p style="color: var(--text-muted);">The developers and contributors behind the platform.</p>
+
+            <div class="team-grid">
+                <div class="member-card">
+                    <div class="member-img">KB</div>
+                    <h3>Kebede Bishaw</h3>
+                    <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Information System Senior</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Passionate about building digital systems
+                        that solve real-world student problems.</p>
+                </div>
+                <div class="member-card">
+                    <div class="member-img">AS</div>
+                    <h3>Abebe Selassie</h3>
+                    <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Information System Senior</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Focused on data accuracy and resource
+                        accessibility for the AAU community.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+    <p style="color:white; justify-self: center;">
+        © <span id="year"></span> Addis Ababa University — Freshman Support.
+    </p>
+
+     <div class="icons">
+        <a href="https://web.facebook.com/p/Addis-Ababa-University-100064311447035/?_rdc=1&_rdr#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/aau_official_/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/aau_official" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+</footer>
+
+
+
+    <script>
+        /**
+         * Logic to animate numbers counting up starting from 75%
+         */
+        const animateNumbers = () => {
+            const stats = document.querySelectorAll('.stat-number');
+
+            stats.forEach(stat => {
+                const target = +stat.getAttribute('data-target');
+                const startValue = Math.floor(target * 0.75); // Start at 75%
+                const duration = 1500; // Animation lasts 1.5 seconds
+                const frames = 60; // Total frames
+                const increment = (target - startValue) / frames;
+
+                let current = startValue;
+                let frame = 0;
+
+                const updateNumber = () => {
+                    frame++;
+                    current += increment;
+
+                    if (frame < frames) {
+                        stat.innerText = Math.ceil(current) + (target > 100 ? '+' : '');
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        stat.innerText = target + (target > 100 ? '+' : '');
+                    }
+                };
+
+                updateNumber();
+            });
+        };
+
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+
+</html>

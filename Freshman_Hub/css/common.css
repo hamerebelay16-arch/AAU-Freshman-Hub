@@ -1,0 +1,217 @@
+:root {
+    --bg: #0b1020;
+    --panel: #111736;
+    --text: #e8ecff;
+    --muted: #a4aed3;
+    --line: #1a2556;
+    --primary: #6c8cff;
+    --ok: #29d3ac;
+    --warn: #ffb84d;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui;
+    background: var(--bg);
+    color: var(--text)
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+header.appbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(10, 13, 30, .6);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 50;
+}
+
+header.appbar nav a {
+    margin-left: 14px;
+    padding: 8px 10px;
+    border-radius: 8px
+}
+
+header.appbar nav a:hover {
+    background: #17204a
+}
+
+.main {
+    padding: 18px 20px 60px
+}
+
+h1 {
+    margin: 6px 0 10px
+}
+
+.muted {
+    color: var(--muted)
+}
+
+
+
+.card {
+    background: linear-gradient(180deg, #12183a, #0f1533);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px
+}
+
+.card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px
+}
+
+.btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #6c8cff, #9aaeff);
+    color: #0b1020
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid #2a3575;
+    color: var(--text)
+}
+
+.list {
+    display: grid;
+    gap: 10px
+}
+
+.list .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0e1431;
+    border: 1px solid #1a2456;
+    padding: 10px 12px;
+    border-radius: 10px
+}
+
+input,
+select,
+textarea {
+    background: #0e1431;
+    border: 1px solid #1c275e;
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 10px;
+    width: 100%
+}
+
+label {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.form-grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+}
+
+hr.sep {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 18px 0
+}
+
+.badge {
+    padding: 2px 8px;
+    background: #1b2359;
+    border: 1px solid #2a3a8a;
+    color: #bfc9ff;
+    border-radius: 999px;
+    font-size: 12px
+}
+.btn.show-more {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    transition: all 0.25s ease;
+}
+
+.btn.show-more:hover {
+    background: var(--primary);
+    color: #0b1020;
+    transform: translateY(-2px);
+}
+
+.btn.show-more:active {
+    transform: scale(0.95);
+}
+.btn.register {
+    background: linear-gradient(135deg, #29d3ac, #6cffe6);
+    color: #062b23;
+    transition: all 0.25s ease;
+}
+
+.btn.register:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(41, 211, 172, 0.35);
+}
+
+.btn.register:active {
+    transform: scale(0.94);
+}
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.hidden {
+    display: none;
+}
+.footer {
+display: flex;
+    flex-wrap: wrap;
+    /* Allows stacking on mobile */
+    align-items: center;
+    justify-content: space-between;
+    /* This spreads the text and icons to opposite ends */
+    padding: 40px 8%;
+    background: #0e1431;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 100px;
+}
+.footer p {
+    margin: 0;
+    color: var(--text-muted);
+}
+.footer icons {
+    display: flex;
+        gap: 24px;
+
+}
+.footer .icons a {
+    color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+    
+}
